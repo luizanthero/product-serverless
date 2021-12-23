@@ -36,6 +36,7 @@ provider:
   logRetentionInDays: ${env:DAYS_LOG_RETENTION}
   versionFunctions: false
   environment: ${file(./resources/serverless.${self:provider.stage}.yaml):environment, ''}
+  s3: ${file(./resources/s3.resource.yaml)}
   stackTags:
     Tier: backend
     Environment: ${file(./resources/serverless.${self:provider.stage}.yaml):tags.Environment, ''}

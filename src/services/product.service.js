@@ -2,7 +2,7 @@
 
 const service = {
   post(payload) {
-    console.info(`Payload: ${payload}`)
+    console.info(`Payload: ${JSON.stringify(payload)}`)
   }
 }
 

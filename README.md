@@ -1,2 +1,2 @@
 # product-serverless
-Examplo de utilização de Lambda com SQS
+Example of using Lambda with SQS

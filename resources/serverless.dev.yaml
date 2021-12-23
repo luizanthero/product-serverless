@@ -1,5 +1,5 @@
 resources:
-  Resources: ${file(resources/sqs.resource.yml)}
+  Resources: ${file(resources/sqs.resource.yaml)}
 
 environment:
   REGION: ${self:provider.region}

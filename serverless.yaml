@@ -11,7 +11,7 @@ plugins:
 useDotenv: true
 
 custom:
-  account: ${file(./resources/serverless.${self:provider.stage}.yml):tags.Account, ''}
+  account: ${file(./resources/serverless.${self:provider.stage}.yaml):tags.Account, ''}
   webpack:
     packager: 'yarn'
     excludeFiles: src/**/*.test.js
@@ -31,13 +31,14 @@ provider:
   region: ${opt:region}
   stage: ${opt:stage}
   runtime: ${env:RUNTIME}
+  timeout: ${env:TIMEOUT}
   memorySize: ${env:MEMORY_SIZE}
   logRetentionInDays: ${env:DAYS_LOG_RETENTION}
   versionFunctions: false
-  environment: ${file(./resources/serverless.${self:provider.stage}.yml):environment, ''}
+  environment: ${file(./resources/serverless.${self:provider.stage}.yaml):environment, ''}
   stackTags:
     Tier: backend
-    Environment: ${file(./resources/serverless.${self:provider.stage}.yml):tags.Environment, ''}
+    Environment: ${file(./resources/serverless.${self:provider.stage}.yaml):tags.Environment, ''}
     Product: ${self:service}
     Name: ${self:service}
     App: ${self:service}
@@ -47,6 +48,6 @@ provider:
     name: sls.${self:custom.account}.${self:provider.region}.${self:provider.stage}.deployment
 
 functions:
-  - ${file(./functions/integration.function.yml)}
+  - ${file(./functions/product.function.yaml)}
 resources:
-  - ${file(./resources/serverless.${self:provider.stage}.yml):resources, ''}
+  - ${file(./resources/serverless.${self:provider.stage}.yaml):resources, ''}

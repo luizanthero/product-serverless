@@ -10,8 +10,6 @@
     "deploy": "serverless deploy --region us-east-1 --stage dev --verbose",
     "destroy": "serverless remove --region us-east-1 --stage dev --verbose",
     "start": "node --inspect=0.0.0.0 ./node_modules/serverless/bin/serverless.js offline start",
-    "build": "./scripts.sh build",
-    "postversion": "./scripts.sh sonar",
     "pretest": "eslint . --fix && prettier --write ./src",
     "lint": "eslint . --fix",
     "test": "./scripts.sh test",

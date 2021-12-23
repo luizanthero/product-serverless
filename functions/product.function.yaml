@@ -17,3 +17,17 @@ send-message:
       Action:
         - sqs:SendMessage
       Resource: '*'
+
+read-file:
+  handler: src/lambdas/read-file.handler
+  timeout: ${self:provider.timeout}
+  events:
+    - s3:
+        bucket: ProductBucket
+        event: s3:ObjectCreated:*
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - s3:*Object
+        - sqs:SendMessage
+      Resource: '*'

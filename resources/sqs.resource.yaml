@@ -8,7 +8,7 @@ ProductQueue:
         Fn::GetAtt:
           - ProductDLQ
           - Arn
-      maxReceiveCount: 3
+      maxReceiveCount: 1
 
 ProductDLQ:
   Type: AWS::SQS::Queue

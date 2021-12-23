@@ -1,0 +1,2 @@
+ProductBucket:
+  name: '${self:service}-bucket-${self:custom.account}-${env:STAGE}'

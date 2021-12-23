@@ -8,3 +8,12 @@ product:
           Fn::GetAtt:
             - ProductQueue
             - Arn
+
+send-message:
+  handler: src/lambdas/send-message.handler
+  timeout: ${self:provider.timeout}
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - sqs:SendMessage
+      Resource: '*'

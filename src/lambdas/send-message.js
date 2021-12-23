@@ -6,11 +6,15 @@ const product = require('../configs/utils/product-factory.util')
 
 const handler = async (event) => {
   try {
+    console.info('Starting Execution...')
+
     for (let index = 0; index < 200; index++) {
       Math.random() < 0.5
         ? await controller.sendSQS(product.factory(), process.env.PRODUCT_QUEUE_URL)
         : await controller.sendSQS(product.factoryError(), process.env.PRODUCT_QUEUE_URL)
     }
+
+    console.info('Execution finished!!!')
 
     return true
   } catch (error) {

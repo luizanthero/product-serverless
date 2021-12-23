@@ -3,7 +3,7 @@
 const service = require('../services/product.service')
 
 const validator = require('../configs/common/validator.service')
-const mandatoryFields = require('../configs/utils/mandatoryFields.util')
+const mandatoryFields = require('../configs/utils/mandatory-fields.util')
 
 const productFields = mandatoryFields.product
 

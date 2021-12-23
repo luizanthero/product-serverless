@@ -5,7 +5,7 @@ const service = {
     console.info(`Payload: ${JSON.stringify(payload)}`)
   },
   delete(payload) {
-    console.warn(`Payload: ${JSON.stringify(payload)}`)
+    throw Error(`Payload Error: ${JSON.stringify(payload)}`)
   }
 }
 

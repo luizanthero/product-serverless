@@ -9,9 +9,13 @@ const productFields = mandatoryFields.product
 
 const controller = {
   post(payload) {
-    const { validateStatus, validateMessage } = validator.validateBodyPayload(payload, productFields)
+    try {
+      const { validateStatus, validateMessage } = validator.validateBodyPayload(payload, productFields)
 
-    validateStatus ? service.post(payload) : service.delete({ ...payload, errorMessage: validateMessage })
+      validateStatus ? service.post(payload) : service.delete({ ...payload, errorMessage: validateMessage })
+    } catch (error) {
+      throw Error(error.message)
+    }
   }
 }
 

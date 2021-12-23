@@ -6,6 +6,10 @@
   "repository": "https://github.com/luizanthero/product-serverless.git",
   "author": "<luizanthero@icloud.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.16.1",
+    "npm": ">=6.14.12"
+  },
   "scripts": {
     "deploy": "serverless deploy --region us-east-1 --stage dev --verbose",
     "destroy": "serverless remove --region us-east-1 --stage dev --verbose",

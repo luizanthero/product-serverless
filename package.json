@@ -1,7 +1,7 @@
 {
   "name": "product-serverless",
   "version": "1.0.0",
-  "description": "Examplo de utilização de Lambda com SQS",
+  "description": "Example of using Lambda with SQS",
   "main": "index.js",
   "repository": "https://github.com/luizanthero/product-serverless.git",
   "author": "<luizanthero@icloud.com>",

@@ -7,6 +7,11 @@ const product = {
     const product = factory.factory(status)
 
     return { Records: [{ body: JSON.stringify(product) }] }
+  },
+  getSQSBodyPayloadBroken(status) {
+    const product = factory.factoryError(status)
+
+    return { Records: [{ body: JSON.stringify(product) }] }
   }
 }
 

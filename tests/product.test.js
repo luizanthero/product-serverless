@@ -9,3 +9,10 @@ it('When Lambda Success', async () => {
 
   expect(result).toEqual(true)
 })
+
+it('When Lambda Fails', async () => {
+  // eslint-disable-next-line jest/valid-expect
+  expect(async () => {
+    await handler.handler(product.getSQSBodyPayloadBroken())
+  }).rejects.toThrow()
+})

@@ -1,0 +1,46 @@
+{
+  "name": "product-serverless",
+  "version": "1.0.0",
+  "description": "Examplo de utilização de Lambda com SQS",
+  "main": "index.js",
+  "repository": "https://github.com/luizanthero/product-serverless.git",
+  "author": "<luizanthero@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "serverless deploy --region us-east-1 --stage dev --verbose",
+    "destroy": "serverless remove --region us-east-1 --stage dev --verbose",
+    "start": "node --inspect=0.0.0.0 ./node_modules/serverless/bin/serverless.js offline start",
+    "build": "./scripts.sh build",
+    "postversion": "./scripts.sh sonar",
+    "pretest": "eslint . --fix && prettier --write ./src",
+    "lint": "eslint . --fix",
+    "test": "./scripts.sh test",
+    "package": "serverless package"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^5.5.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "faker": "^5.5.3",
+    "jest": "^27.4.5",
+    "prettier": "^2.5.1",
+    "serverless": "^2.69.1",
+    "serverless-deployment-bucket": "^1.5.1",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-offline": "^8.3.1",
+    "serverless-plugin-resource-tagging": "^1.2.0",
+    "serverless-webpack": "^5.6.0",
+    "webpack": "^5.65.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1048.0",
+    "axios": "^0.24.0",
+    "lodash": "^4.17.21"
+  }
+}

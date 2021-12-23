@@ -3,11 +3,15 @@
 const controller = require('../controllers/product.controller')
 
 const handler = async (event) => {
-  const { body } = event.Records[0]
+  try {
+    const { body } = event.Records[0]
 
-  controller.post(JSON.parse(body))
+    controller.post(JSON.parse(body))
 
-  return true
+    return true
+  } catch (error) {
+    throw Error(error)
+  }
 }
 
 module.exports = { handler }

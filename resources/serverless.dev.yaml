@@ -1,0 +1,10 @@
+resources:
+  Resources: ${file(resources/sqs.resource.yml)}
+
+environment:
+  REGION: ${self:provider.region}
+  PRODUCT_QUEUE_URL: !Ref ProductQueue
+
+tags:
+  Environment: dev
+  Account: ${env:AWS_ACCOUNT_ID}

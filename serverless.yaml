@@ -1,0 +1,52 @@
+service: product-serverless
+
+variablesResolutionMode: 20210326
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-deployment-bucket
+  - serverless-webpack
+  - serverless-offline
+
+useDotenv: true
+
+custom:
+  account: ${file(./resources/serverless.${self:provider.stage}.yml):tags.Account, ''}
+  webpack:
+    packager: 'yarn'
+    excludeFiles: src/**/*.test.js
+    includeModules:
+      packagePath: './package.json'
+      forceExclude:
+        - aws-sdk
+
+package:
+  individually: true
+  exclude:
+    - coverage/**
+    - tests/**
+
+provider:
+  name: aws
+  region: ${opt:region}
+  stage: ${opt:stage}
+  runtime: ${env:RUNTIME}
+  memorySize: ${env:MEMORY_SIZE}
+  logRetentionInDays: ${env:DAYS_LOG_RETENTION}
+  versionFunctions: false
+  environment: ${file(./resources/serverless.${self:provider.stage}.yml):environment, ''}
+  stackTags:
+    Tier: backend
+    Environment: ${file(./resources/serverless.${self:provider.stage}.yml):tags.Environment, ''}
+    Product: ${self:service}
+    Name: ${self:service}
+    App: ${self:service}
+    Account: ${self:custom.account}
+    Service-Provided: lambda
+  deploymentBucket:
+    name: sls.${self:custom.account}.${self:provider.region}.${self:provider.stage}.deployment
+
+functions:
+  - ${file(./functions/integration.function.yml)}
+resources:
+  - ${file(./resources/serverless.${self:provider.stage}.yml):resources, ''}

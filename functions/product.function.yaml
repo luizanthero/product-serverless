@@ -1,0 +1,10 @@
+product:
+  handler: src/lambdas/product.handler
+  timeout: ${self:provider.timeout}
+  events:
+    - sqs:
+        batchSize: ${env:BATCH_SIZE}
+        arn:
+          Fn::GetAtt:
+            - ProductQueue
+            - Arn

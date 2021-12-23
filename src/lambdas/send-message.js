@@ -14,7 +14,7 @@ const handler = async (event) => {
 
     return true
   } catch (error) {
-    throw Error(error)
+    throw Error(error.message)
   }
 }
 

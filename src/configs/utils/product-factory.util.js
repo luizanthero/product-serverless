@@ -1,6 +1,5 @@
 'use strict'
 
-// eslint-disable-next-line node/no-unpublished-require
 const faker = require('faker')
 
 const product = {
